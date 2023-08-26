@@ -21,10 +21,18 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-                    steps {
-                        sh './jenkins/scripts/deliver.sh'
-                    }
-                }
+        stage('Manual Approval') {
+            input {
+                message "Lanjutkan ke tahap Deploy?"
+                ok "Proceed"
+                submitter "fatimah"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                sleep time: 60, unit: 'SECONDS'
+            }
+        }
     }
 }
