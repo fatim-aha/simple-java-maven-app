@@ -27,6 +27,9 @@ pipeline {
                 ok "Proceed"
                 submitter "fatimah"
             }
+            steps {
+                echo 'Procceed'
+            }
         }
         stage('Deploy') {
             steps {
